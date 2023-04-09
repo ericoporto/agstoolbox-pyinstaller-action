@@ -1,0 +1,50 @@
+# action.yaml
+name: 'AGS Toolbox Pyinstaller'
+description: 'GitHub Action with PyInstaller for Windows, for use building AGS Toolbox'
+branding:
+  icon: 'box'
+  color: 'blue'
+inputs:
+  path:
+    description: 'Directory containing source code (optional requirements.txt).'
+    required: True
+    default: src
+  pypi_url:
+    description: 'Specify a custom URL for PYPI'
+    required: False
+    default: https://pypi.python.org/
+  pypi_index_url:
+    description: 'Specify a custom URL for PYPI Index'
+    required: False
+    default: https://pypi.python.org/simple
+  spec:
+    description: 'Specify a file path for .spec file'
+    required: False
+    default: ""
+  requirements:
+    description: 'Specify a file path for requirements.txt file'
+    required: False
+    default: "requirements.txt"
+  exe_file_info:
+    description: 'Specify a file info for use with the generated exe file'
+    required: False
+    default: ""
+  exe_file:
+    description: 'Specify name of exe file to set into'
+    required: False
+    default: ""
+outputs:
+  output:
+    description: 'The output of PyInstaller'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.path }}
+    - ${{ inputs.pypi_url }}
+    - ${{ inputs.pypi_index_url }}
+    - ${{ inputs.spec }}
+    - ${{ inputs.requirements }}
+    - ${{ inputs.exe_file_info }}
+    - ${{ inputs.exe_file }}
