@@ -1,4 +1,4 @@
-FROM docker pull ghcr.io/ericoporto/containedpywine/containedpywine:latest
+FROM ghcr.io/ericoporto/containedpywine/containedpywine:latest
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
